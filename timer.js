@@ -20,14 +20,13 @@ const longBreakBtn = document.getElementById('longBreak-btn')
 
 
 
-
 function updateCountdown() {
     const minutes = Math.floor(time/60);
     let seconds = time % 60;
     // Gets remaining seconds after minutes are removed
     seconds = seconds < 10 ? '0' + seconds : seconds;
     // Updates the UI
-    countdownEl.innerHTML = minutes = '${minutes}: ${seconds}';
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
 
     // Stops the interval when the timer reaches 0. If not,
     // decreases the time by one second.
@@ -56,6 +55,7 @@ pauseBtn.addEventListener('click', () => {
         interval = setInterval(updateCountdown, 1000);
     }
 });
+
 
 restartBtn.addEventListener('click', () =>  {
     // Stops the timer

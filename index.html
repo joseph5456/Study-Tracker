@@ -28,11 +28,11 @@
         <section class="center-column">
             <div class="timer-section">
                 <h2>Timer</h2>
-                <div class="timer-display">25:00</div>
+                <div class="timer-display" id="countdown">25:00</div>
                 <div class="timer-controls">
-                    <button>Start</button>
-                    <button>Pause</button>
-                    <button>Reset</button>
+                    <button id="start-btn">Start</button>
+                    <button id ="pause-btn">Pause</button>
+                    <button id="restart-btn">Reset</button>
                 </div>
             </div>
 
@@ -44,18 +44,18 @@
         </section>
 
 
-        <aside class="tasks">
+        <div class="tasks">
             <h2>Tasks</h2>
             <ul>
                 <li>Review notes</li>
                 <li>Practice problems</li>
                 <li>Write summary</li>
             </ul>
-        </aside>
+        </div>
     </main>
 
 
-    <script src="scripts.js"></script>
+    <script src="timer.js"></script>
 </body>
 
 </html>
