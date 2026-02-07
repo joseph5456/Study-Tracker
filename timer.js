@@ -15,6 +15,13 @@ const restartBtn = document.getElementById('restart-btn');
 
 const pauseBtn = document.getElementById('pause-btn');
 
+// Short break button display element
+const shortBreakBtn = document.getElementById('shortBreak-btn');
+// Long break button display element
+const longBreakBtn = document.getElementById('longBreak-btn')
+
+
+
 function updateCountdown() {
     const minutes = Math.floor(time/60);
     let seconds = time % 60;
@@ -54,6 +61,7 @@ pauseBtn.addEventListener('click', () => {
 restartBtn.addEventListener('click', () =>  {
     // Stops the countdown
     clearInterval(interval);
+    // Resets the interval
     interval = null;
     // Resets minutes
     time = startingMinutes * 60;
@@ -61,3 +69,28 @@ restartBtn.addEventListener('click', () =>  {
     updateCountdown();
 });
 
+shortBreakBtn.addEventListener('click', () => {
+    // Stops the timer
+    clearInterval(interval)
+    // Resets the interval
+    interval = null;
+    // Sets the time to five minutes
+    time = 5 * 60;
+    // Calls updateCountdown function
+    updateCountdown();
+    // Starts the timer right away
+    interval = setInterval(updateCountdown,1000);
+});
+
+longBreakBtn.addEventListener('click', () => {
+    // Stop the timer
+    clearInterval(interval);
+    // Resets the interval
+    interval = null;
+    // Sets time to 15 minutes
+    time = 15 * 60;
+    // Calls updateCountdown function
+    updateCountdown();
+    // Starts the timer right away
+    interval = setInterval(updateCountdown,1000);
+});
