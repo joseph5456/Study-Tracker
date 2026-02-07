@@ -8,7 +8,9 @@ let interval = null;
 // Countdown display element
 const countdownEl = document.getElementById('countdown');
 // Button display element
-const startBtn = document.getElementById('start-btn')
+const startBtn = document.getElementById('start-btn');
+
+const pauseBtn = document.getElementById('pause-btn');
 
 function updateCountdown() {
     const minutes = Math.floor(time/60);
@@ -31,6 +33,17 @@ startBtn.addEventListener('click', () => {
         // Runs the countdown function
         updateCountdown();
         // Call the updateCountdown function every 1 second
+        interval = setInterval(updateCountdown, 1000);
+    }
+});
+
+pauseBtn.addEventListener('click', () => {
+    // If the timer is running, it is paused
+    if(interval) {
+        clearInterval(interval);
+        interval = null;
+    // If it is not running, it is resumed
+    } else {
         interval = setInterval(updateCountdown, 1000);
     }
 });
