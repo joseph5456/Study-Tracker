@@ -11,7 +11,8 @@ const countdownEl = document.getElementById('countdown');
 const startBtn = document.getElementById('start-btn');
 // Restart button element
 const restartBtn = document.getElementById('restart-btn');
-
+// Short break button
+const shortBreakBtn = document.getElementById('shortBreak-btn');
 
 const pauseBtn = document.getElementById('pause-btn');
 
@@ -52,8 +53,9 @@ pauseBtn.addEventListener('click', () => {
 });
 
 restartBtn.addEventListener('click', () =>  {
-    // Stops the countdown
+    // Stops the timer
     clearInterval(interval);
+    // Resets the interval
     interval = null;
     // Resets minutes
     time = startingMinutes * 60;
@@ -61,3 +63,15 @@ restartBtn.addEventListener('click', () =>  {
     updateCountdown();
 });
 
+shortBreakBtn.addEventListener('click', () => {
+    // Stops the timer
+    clearInterval(interval)
+    // Resets the interval
+    interval = null;
+    // Sets the time to five minutes
+    time = 5 * 60;
+    // Calls updateCountdown function
+    updateCountdown();
+    // Starts the timer right away
+    interval = setInterval(updateCountdown,1000);
+});
