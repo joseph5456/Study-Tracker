@@ -11,10 +11,8 @@ const countdownEl = document.getElementById('countdown');
 const startBtn = document.getElementById('start-btn');
 // Restart button element
 const restartBtn = document.getElementById('restart-btn');
-
-
+// Pause button element
 const pauseBtn = document.getElementById('pause-btn');
-
 // Short break button display element
 const shortBreakBtn = document.getElementById('shortBreak-btn');
 // Long break button display element
@@ -28,7 +26,7 @@ function updateCountdown() {
     // Gets remaining seconds after minutes are removed
     seconds = seconds < 10 ? '0' + seconds : seconds;
     // Updates the UI
-    countdownEl.innerHTML = minutes = '${minutes}: ${seconds}';
+    countdownEl.innerHTML = minutes = `${minutes}:${seconds}`;
 
     // Stops the interval when the timer reaches 0. If not,
     // decreases the time by one second.
