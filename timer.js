@@ -26,7 +26,7 @@ function updateCountdown() {
     // Gets remaining seconds after minutes are removed
     seconds = seconds < 10 ? '0' + seconds : seconds;
     // Updates the UI
-    countdownEl.innerHTML = `${minutes}: ${seconds}`;
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
 
     // Stops the interval when the timer reaches 0. If not,
     // decreases the time by one second.
@@ -69,7 +69,7 @@ restartBtn.addEventListener('click', () =>  {
 
 shortBreakBtn.addEventListener('click', () => {
     // Stops the timer
-    clearInterval(interval)
+    clearInterval(interval);    
     // Resets the interval
     interval = null;
     // Sets the time to five minutes

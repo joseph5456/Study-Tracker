@@ -9,12 +9,12 @@ html, body {
 }
 
 body {
-    background: #f3f4f6;
-    color: #111;
+    background: #0f172a;
+    color: #e5e7eb;
 }
 
 header {
-    background: white;
+    background: #6366f1;
     padding: 18px 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     text-align: center;
@@ -25,11 +25,28 @@ header h1 {
     font-size: 1.25rem;
 }
 
+/*make buttons look good*/
+.timer-controls button {
+    background: #4f46e5;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    margin: 0 6px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.timer-display {
+    font-size: 5rem;
+}
+
 .timer-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: 5rem;
 }
 
 /*change layout to display due dates and tasks on side
@@ -49,7 +66,7 @@ and timer and calendar in middle*/
 .tasks,
 .timer-section,
 .calendar-section {
-   background: #fff;
+   background: #1e293b;
    border-radius: 10px;
    padding: 16px;
    box-shadow: 0 2px 6px rgba(16, 24, 40, 0.03);
