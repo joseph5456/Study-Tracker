@@ -7,8 +7,11 @@ let interval = null;
 
 // Countdown display element
 const countdownEl = document.getElementById('countdown');
-// Button display element
+// Start button display element
 const startBtn = document.getElementById('start-btn');
+// Restart button element
+const restartBtn = document.getElementById('restart-btn');
+
 
 const pauseBtn = document.getElementById('pause-btn');
 
