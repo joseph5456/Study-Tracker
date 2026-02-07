@@ -1,6 +1,13 @@
 const addTaskBtn = document.getElementById('add-task-btn');
 const taskList = document.querySelector('.tasks ul');
 
+const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+savedTasks.forEach(task => {
+    const li = document.createElement('li');
+    li.textContent = task;
+    taskList.appendChild(li);
+});
+
 addTaskBtn.addEventListener('click', () => {
     // Create input field
     const input = document.createElement('input');
@@ -17,6 +24,12 @@ addTaskBtn.addEventListener('click', () => {
             const newTask = document.createElement('li');
             newTask.textContent = input.value;
             taskList.appendChild(newTask);
+
+            //Save to localStorage
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push(input.value);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
             input.remove(); // Remove input field
         }
     });
