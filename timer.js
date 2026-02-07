@@ -47,3 +47,13 @@ pauseBtn.addEventListener('click', () => {
         interval = setInterval(updateCountdown, 1000);
     }
 });
+
+restartBtn.addEventListener('click', () =>  {
+    // Stops the countdown
+    clearInterval(interval);
+    interval = null;
+    // Resets minutes
+    time = startingMinutes * 60;
+    // Resets timer
+    updateCountdown();
+}
