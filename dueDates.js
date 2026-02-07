@@ -1,6 +1,13 @@
 const addDueDateBtn = document.getElementById('add-due-date-btn');
 const dueDateList = document.querySelector('.due-dates ul');
 
+const savedDueDates = JSON.parse(localStorage.getItem('dueDates')) || [];
+savedDueDates.forEach(dueDate => {
+    const li = document.createElement('li');
+    li.textContent = dueDate;
+    dueDateList.appendChild(li);
+});
+
 addDueDateBtn.addEventListener('click', () => {
     // Create input field
     const input = document.createElement('input');
@@ -17,6 +24,10 @@ addDueDateBtn.addEventListener('click', () => {
             const newDueDate = document.createElement('li');
             newDueDate.textContent = input.value;
             dueDateList.appendChild(newDueDate);
+
+            let dueDates = JSON.parse(localStorage.getItem('dueDates')) || [];
+            dueDates.push(input.value);
+            localStorage.setItem('dueDates', JSON.stringify(dueDates));
             input.remove(); // Remove input field
         }
     });
