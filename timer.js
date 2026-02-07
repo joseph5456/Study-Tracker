@@ -59,4 +59,5 @@ restartBtn.addEventListener('click', () =>  {
     time = startingMinutes * 60;
     // Resets timer
     updateCountdown();
-}
+});
+
