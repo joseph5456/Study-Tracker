@@ -1,6 +1,25 @@
 const addDueDateBtn = document.getElementById('add-due-date-btn');
 const dueDateList = document.querySelector('.due-dates ul');
 
+// Function to show/hide placeholder
+function updateDueDatePlaceholder() {
+    let placeholder = dueDateList.querySelector('.placeholder');
+    if (dueDateList.children.length === 0) {
+        if (!placeholder) {
+            placeholder = document.createElement('li');
+            placeholder.className = 'placeholder';
+            placeholder.textContent = 'Add due dates';
+            placeholder.style.color = '#999';
+            placeholder.style.fontStyle = 'italic';
+            dueDateList.appendChild(placeholder);
+        }
+    } else {
+        if (placeholder) {
+            placeholder.remove();
+        }
+    }
+}
+
 const savedDueDates = JSON.parse(localStorage.getItem('dueDates')) || [];
 savedDueDates.forEach(dueDate => {
     const li = document.createElement('li');
@@ -31,11 +50,15 @@ savedDueDates.forEach(dueDate => {
     });
     li.addEventListener('click', () => {
         li.remove();
+        updateDueDatePlaceholder(); // Show placeholder if no due dates left
         let dueDates = JSON.parse(localStorage.getItem('dueDates')) || [];
         dueDates = dueDates.filter(d => d !== dueDate);
         localStorage.setItem('dueDates', JSON.stringify(dueDates));
     });
 });
+
+// Show placeholder if no due dates
+updateDueDatePlaceholder();
 
 addDueDateBtn.addEventListener('click', () => {
     // Create input field
@@ -55,6 +78,12 @@ addDueDateBtn.addEventListener('click', () => {
             newDueDate.textContent = input.value;
             newDueDate.style.position = 'relative';
             newDueDate.style.cursor = 'pointer'; // Pointer for entire item
+
+            // Remove placeholder if it exists
+            const placeholder = dueDateList.querySelector('.placeholder');
+            if (placeholder) {
+                placeholder.remove();
+            }
 
             // Trash icon (hidden by default)
             const trash = document.createElement('span');
@@ -79,6 +108,7 @@ addDueDateBtn.addEventListener('click', () => {
             });
             newDueDate.addEventListener('click', () => {
                 newDueDate.remove();
+                updateDueDatePlaceholder(); // Show placeholder if no due dates left
                 let dueDates = JSON.parse(localStorage.getItem('dueDates')) || [];
                 dueDates = dueDates.filter(d => d !== input.value);
                 localStorage.setItem('dueDates', JSON.stringify(dueDates));
