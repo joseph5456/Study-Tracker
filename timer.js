@@ -55,7 +55,6 @@ startBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
     // If the timer is running, it is paused
     if(interval) {
-        clearInterval(interval);
         interval = null;
     // If it is not running, it is resumed
     } else {
