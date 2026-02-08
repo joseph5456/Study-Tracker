@@ -105,15 +105,29 @@ and timer and calendar in middle*/
     font-size: 20px;
     width: 100%;
     padding: 10px;
+    margin-top: 20px;
+    background-color:#6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.add-input {
+    font-family: inherit;
+    font-size: 14px;
+    width: 80%;
+    padding: 6px;
     margin: 10px;
     background-color:#6366f1;
     color: white;
+    border: none;
+    border-radius: 6px;
 }
 
 
 
 input::placeholder {
-    color: white;
+    color: #e5e7eb;
 }
 
 
