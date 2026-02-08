@@ -19,6 +19,10 @@ const shortBreakBtn = document.getElementById('shortBreak-btn');
 const longBreakBtn = document.getElementById('longBreak-btn');
 // Costum time input display element
 const customTimeInput = document.getElementById('custom-time');
+// Custom time button element
+const customTimeBtn = document.getElementById('custom-time-btn');
+// Custom time input container element
+const customTimeInputContainer = document.getElementById('custom-time-input-container');
 
 
 
@@ -96,6 +100,16 @@ longBreakBtn.addEventListener('click', () => {
     interval = setInterval(updateCountdown,1000);
 });
 
+customTimeBtn.addEventListener('click', () => {
+    // Toggle the custom time input field
+    if (customTimeInputContainer.style.display === 'none') {
+        customTimeInputContainer.style.display = 'block';
+        customTimeInput.focus();
+    } else {
+        customTimeInputContainer.style.display = 'none';
+    }
+});
+
 customTimeInput.addEventListener('keydown', (e) => {
     if(e.key === 'Enter') {
         // Sets minutes at the number the user entered
@@ -114,6 +128,8 @@ customTimeInput.addEventListener('keydown', (e) => {
         // Runs the updateCountdown function
         updateCountdown();
         // Clears the input element. 
-        customTimeInpute.value = '';
+        customTimeInput.value = '';
+        // Hide the input field
+        customTimeInputContainer.style.display = 'none';
     }
 });
