@@ -1,6 +1,25 @@
 const addTaskBtn = document.getElementById('add-task-btn');
 const taskList = document.querySelector('.tasks ul');
 
+// Function to show/hide placeholder
+function updatePlaceholder() {
+    let placeholder = taskList.querySelector('.placeholder');
+    if (taskList.children.length === 0) {
+        if (!placeholder) {
+            placeholder = document.createElement('li');
+            placeholder.className = 'placeholder';
+            placeholder.textContent = 'Place tasks here';
+            placeholder.style.color = '#999';
+            placeholder.style.fontStyle = 'italic';
+            taskList.appendChild(placeholder);
+        }
+    } else {
+        if (placeholder) {
+            placeholder.remove();
+        }
+    }
+}
+
 const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
 savedTasks.forEach(task => {
     const li = document.createElement('li');
@@ -35,12 +54,16 @@ savedTasks.forEach(task => {
         checkmark.style.color = 'green';
         setTimeout(() => {
             li.remove();
+            updatePlaceholder(); // Show placeholder if no tasks left
             let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
             tasks = tasks.filter(t => t !== task);
             localStorage.setItem('tasks', JSON.stringify(tasks));
         }, 200);
     });
 });
+
+// Show placeholder if no tasks
+updatePlaceholder();
 
 addTaskBtn.addEventListener('click', () => {
     // Create input field
@@ -56,6 +79,13 @@ addTaskBtn.addEventListener('click', () => {
     input.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && input.value.trim() !== '') {
             const taskText = input.value;
+            
+            // Remove placeholder if it exists
+            const placeholder = taskList.querySelector('.placeholder');
+            if (placeholder) {
+                placeholder.remove();
+            }
+            
             const li = document.createElement('li');
             li.style.cursor = 'pointer';
 
@@ -89,6 +119,7 @@ addTaskBtn.addEventListener('click', () => {
                 // Remove after 1 second
                 setTimeout(() => {
                     li.remove();
+                    updatePlaceholder(); // Show placeholder if no tasks left
                     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
                     tasks = tasks.filter(t => t !== taskText);
                     localStorage.setItem('tasks', JSON.stringify(tasks));
