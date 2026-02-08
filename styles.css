@@ -27,7 +27,7 @@ header h1 {
 }
 
 /*make buttons look good*/
-.timer-controls button {
+button {
     background: #4f46e5;
     border: none;
     color: white;
@@ -38,8 +38,18 @@ header h1 {
     cursor: pointer;
 }
 
+button:hover {
+    background:#9400D3;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(148, 0, 211, 0.2);
+}
+
 .timer-display {
-    font-size: 5rem;
+    font-size: 10rem;
+}
+
+.timer-controls {
+    font-size: 1.25rem;
 }
 
 .timer-section {
@@ -57,7 +67,7 @@ and timer and calendar in middle*/
     margin: 24px auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: 260px 400px 260px;
+    grid-template-columns: 260px 500px 260px;
     gap: 150px;
     align-items: start;
     justify-content: center;
