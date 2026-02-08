@@ -38,6 +38,7 @@ function updateCountdown() {
     // decreases the time by one second.
     if (time <= 0) {
         clearInterval(interval);
+        document.getElementById('timer-alarm').play();
     } else {
         time--;
     }
