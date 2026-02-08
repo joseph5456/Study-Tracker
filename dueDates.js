@@ -41,7 +41,8 @@ addDueDateBtn.addEventListener('click', () => {
     // Create input field
     const input = document.createElement('input');
     input.type = 'text';
-    input.placeholder = 'Type due date and press Enter...';
+    input.className = 'add-input';
+    input.placeholder = 'Type due date';
 
     // Insert above the list
     dueDateList.parentElement.insertBefore(input, dueDateList);

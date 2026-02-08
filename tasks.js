@@ -69,7 +69,8 @@ addTaskBtn.addEventListener('click', () => {
     // Create input field
     const input = document.createElement('input');
     input.type = 'text';
-    input.placeholder = 'Type task and press Enter...';
+    input.className = 'add-input';
+    input.placeholder = 'Type task';
     
     // Insert above the list
     taskList.parentElement.insertBefore(input, taskList);
