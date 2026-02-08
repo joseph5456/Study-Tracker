@@ -17,11 +17,13 @@ const pauseBtn = document.getElementById('pause-btn');
 const shortBreakBtn = document.getElementById('shortBreak-btn');
 // Long break button display element
 const longBreakBtn = document.getElementById('longBreak-btn');
+// Costum time input display element
+const customTimeInput = document.getElementById('custom-time');
 
 
 
 function updateCountdown() {
-    const minutes = Math.floor(time/60);
+    const minutes = Math.floor(time / 60);
     let seconds = time % 60;
     // Gets remaining seconds after minutes are removed
     seconds = seconds < 10 ? '0' + seconds : seconds;
@@ -36,6 +38,7 @@ function updateCountdown() {
         time--;
     }
 }
+
 startBtn.addEventListener('click', () => {
     if(!interval) {
         // Runs the countdown function
@@ -91,4 +94,26 @@ longBreakBtn.addEventListener('click', () => {
     updateCountdown();
     // Starts the timer right away
     interval = setInterval(updateCountdown,1000);
+});
+
+customTimeInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+        // Sets minutes at the number the user entered
+        const minutes = parseInt(customTimeInput.value);
+        // Alerts if no number or a negative number was entered
+        if (isNaN(minutes || minutes <= 0)) {
+            alert("Enter a valid number of minutes");
+            return;
+        }
+        // Stops the timer
+        clearInterval(interval);
+        // Resets the timer
+        interval = null;
+        // Creates the new time in seconds
+        time = minutes * 60;
+        // Runs the updateCountdown function
+        updateCountdown();
+        // Clears the input element. 
+        customTimeInpute.value = '';
+    }
 });
