@@ -55,6 +55,7 @@ startBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
     // If the timer is running, it is paused
     if(interval) {
+        clearInterval(interval);
         interval = null;
     // If it is not running, it is resumed
     } else {
@@ -82,8 +83,6 @@ shortBreakBtn.addEventListener('click', () => {
     time = 5 * 60;
     // Calls updateCountdown function
     updateCountdown();
-    // Starts the timer right away
-    interval = setInterval(updateCountdown,1000);
 });
 
 longBreakBtn.addEventListener('click', () => {
@@ -95,8 +94,6 @@ longBreakBtn.addEventListener('click', () => {
     time = 15 * 60;
     // Calls updateCountdown function
     updateCountdown();
-    // Starts the timer right away
-    interval = setInterval(updateCountdown,1000);
 });
 
 customTimeBtn.addEventListener('click', () => {
